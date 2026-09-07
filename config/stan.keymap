@@ -6,11 +6,13 @@
 #define BASE 0
 #define LOWER 1
 #define UPPER 2
+#define MODEL 3
+#define MODNUMB 4
 
-/ {
+/  {
 
 behaviours {
-
+    
     hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -108,6 +110,26 @@ td12: tap_dance_12 {
             hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
         };
 
+    combos {
+        compatible = "zmk,combos";
+
+        combo_toggle_layer {
+            timeout-ms = <50>;
+            key-position = <0 9 33>;
+            binding = <&tog 3>;
+        };
+
+    mt: mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+            display-name = "Mod-Tap";
+        };    
+    };
+        
+
     };
 
 keymap {
@@ -177,8 +199,47 @@ display-name = "UPPER";
     >;
     };
 
-extra1 {
-    status = "reserved";
+model_toggle_layer {
+display-name = "MODEL"; 
+// ---------------------------------   ----------------------------------------------
+// | L     |  G  |  R  | C  |   A |     |       |         |  UP    |         |delete|
+// ---------------------------------   ----------------------------------------------
+// |  CLR  | bt1 | bt2 | bt3 |     |   |  HOME  |  LEFT   |  DOWN  |  RIGHT  |      |
+// ---------------------------------   ----------------------------------------------
+// | stdulk|     |     |     |     |   |        |         |        |   END   |      |
+// ---------------------------------   ----------------------------------------------
+//               | GUI | LWR | SPC |   | ENT | RSE  | ALT | 
+//               -------------------   --------------------
+
+    bindings = <
+
+    &kp L           &kp G           &kp R           &kp C         &kp A                   &none           &none           &none           &none           &none   
+    &kp LS(S)       &kp Q           &kp M           &kp O         &kp D                   &none           &none           &none           &none           &none   
+    &kp LS(E)       &kp LS(W)       &kp LS(F)       &none             &none                       &none           &none           &none           &none           &none   
+                                    &none               &none             &lt 4 RET                     &none           &none           &none
+    >;
+    };
+
+
+lower_layer {
+ display-name = "LOWER"; 
+// ---------------------------------------   --------------------------------
+// |  1 !  |    2 @    | 3 # | 4 $ | 5 % |   | 6 ^ |  7 & | 8 * | 9   |  0  |
+// ---------------------------------------   --------------------------------
+// |  TAB  |  LGUI(E)  |     | PRNT| CAP |   |  -  |  =   | lbkt| rbkt| ' " |
+// ---------------------------------------   --------------------------------
+// | delete|           |     | PST | CAD |   |  _  |  +   | lbrc| rbrc|  |  |
+// ---------------------------------------   --------------------------------
+//                     | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+//                     -------------------   --------------------  
+
+    bindings = <
+
+    &td1             &td2        &td3      &td4          &td5                                  &td6             &td7              &td8             &td9            &td10   
+    &kp TAB          &none       &none     &kp PSCRN     &kp CAPS                              &kp MINUS        &kp EQUAL         &kp LBKT         &kp RBKT        &td11  
+    &kp DEL          &none       &none     &none         &none                                 &kp UNDER        &kp PLUS          &kp LBRC         &kp RBRC        &td12
+                                 &kp LGUI  &mo 1         &kp RET                               &kp RET          &mo 2             &kp RALT
+    >;
+    };
 };
-};
-};
+}
