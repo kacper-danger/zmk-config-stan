@@ -115,7 +115,7 @@ td12: tap_dance_12 {
 
         combo_toggle_layer {
             timeout-ms = <50>;
-            key-position = <0 9 33>;
+            key-positions = <0 9 33>;
             bindings = <&tog 3>;
         };
 
