@@ -197,11 +197,11 @@ display-name = "MODEL";
 // ---------------------------------   ----------------------------------------------
 // | L     |  G  |  R  | C  |   A |     |       |         |  UP    |         |delete|
 // ---------------------------------   ----------------------------------------------
-// |  CLR  | bt1 | bt2 | bt3 |     |   |  HOME  |  LEFT   |  DOWN  |  RIGHT  |      |
+// |LS+S  | Q  | M | O    |    D   |    |  HOME  |  LEFT   |  DOWN  |  RIGHT  |      |
 // ---------------------------------   ----------------------------------------------
-// | stdulk|     |     |     |     |   |        |         |        |   END   |      |
+// | LS+E|  LS+W   |LS+F  |     |     |   |        |         |        |   END   |      |
 // ---------------------------------   ----------------------------------------------
-//               | GUI | LWR | SPC |   | ENT | RSE  | ALT | 
+//               |       | ESC| RET|   | ENT | RSE  | ALT | 
 //               -------------------   --------------------
 
     bindings = <
@@ -209,7 +209,7 @@ display-name = "MODEL";
     &kp L           &kp G           &kp R           &kp C         &kp A                   &none           &none           &none           &none           &none   
     &kp LS(S)       &kp Q           &kp M           &kp O         &kp D                   &none           &none           &none           &none           &none   
     &kp LS(E)       &kp LS(W)       &kp LS(F)       &none             &none                       &none           &none           &none           &none           &none   
-                                    &none               &none             &lt 4 RET                     &none           &none           &none
+                                    &none               &kp ESC             &lt 4 RET                     &none           &none           &none
     >;
     };
 
@@ -228,10 +228,10 @@ modnumb_layer {
 
     bindings = <
 
-    &td1             &td2        &td3      &td4          &td5                                  &td6             &td7              &td8             &td9            &td10   
-    &kp TAB          &none       &none     &kp PSCRN     &kp CAPS                              &kp MINUS        &kp EQUAL         &kp LBKT         &kp RBKT        &td11  
-    &kp DEL          &none       &none     &none         &none                                 &kp UNDER        &kp PLUS          &kp LBRC         &kp RBRC        &td12
-                                 &kp LGUI  &mo 1         &kp RET                               &kp RET          &mo 2             &kp RALT
+    &kp 7             &kp 8        &kp 9      &kp ESC          &none                                  &td6             &td7              &td8             &td9            &td10   
+    &kp 4         &kp 5       &kp 6     &kp MINUS     &kp PLUS                              &kp MINUS        &kp EQUAL         &kp LBKT         &kp RBKT        &td11  
+    &kp 1          &kp 2       &kp 3     &kp DOT         &none                                 &kp UNDER        &kp PLUS          &kp LBRC         &kp RBRC        &td12
+                                 &kp 0  &kp ESC         &kp RET                               &kp RET          &mo 2             &kp RALT
     >;
     };
 };
